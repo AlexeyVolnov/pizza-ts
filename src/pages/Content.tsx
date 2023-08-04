@@ -19,7 +19,7 @@ const Content: FC<IContentProps> = ({}) => {
   const filterCategories = pizzas.filter(pizza => pizza.category.includes(activeCategories))
 
   return (
-     <div>
+     <>
 
        <div className="container">
          <div className="content__top">
@@ -35,12 +35,12 @@ const Content: FC<IContentProps> = ({}) => {
            />
          </div>
          <h2 className="content__title">Все пиццы</h2>
-         <div className="content__items">
+
            <PizzaList pizzaList={filterCategories}/>
-         </div>
+
        </div>
 
-     </div>
+     </>
   )
 }
 

@@ -36,7 +36,6 @@ const dispatch = useAppDispatch()
 
 
    return (
-       <div>
           <div ref={sortRef} className="sort">
              <div
                  className="sort__label"
@@ -63,7 +62,6 @@ const dispatch = useAppDispatch()
                    className={sortBy === option ? 'active' : ''}>{option}</li>)}</ul>
              </div>}
           </div>
-       </div>
    )
 }
 export default SortPopup

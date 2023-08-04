@@ -5,25 +5,26 @@ import {IPizza} from "../../../types/IPizza.ts";
 
 
 interface IPizzaItemProps {
-   pizza: IPizza
+  pizza: IPizza
 }
 
 const PizzaItem: FC<IPizzaItemProps> = ({pizza}) => {
-   return (
-          <div className="pizza-block">
-             <img
-                 className="pizza-block__image"
-                 src={pizza.imageUrl}
-                 alt="Pizza"
-             />
-             <h4 className="pizza-block__title">{pizza.name}</h4>
-             <PizzaOption types={pizza.types} sizes={pizza.sizes}/>
-             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">От {pizza.prise}</div>
-                <ButtonAddPizza pizza={pizza}/>
-             </div>
-          </div>
-   );
+  return (
+     <div className="">
+       <img
+          className="m-auto"
+          src={pizza.imageUrl}
+          alt="Pizza"
+       />
+
+       <h4 className="pizza-block__title">{pizza.name}</h4>
+       <PizzaOption types={pizza.types} sizes={pizza.sizes}/>
+       <div className="pizza-block__bottom">
+         <div className="pizza-block__price">От {pizza.prise}</div>
+         <ButtonAddPizza pizza={pizza}/>
+       </div>
+     </div>
+  );
 }
 
 export default PizzaItem

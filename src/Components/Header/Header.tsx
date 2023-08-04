@@ -19,13 +19,13 @@ const Header: FC<IHeaderProps> = ({}) => {
           <div>
              <div className="header">
                 <div className="container">
-                   <div className="header__logo">
+                   <NavLink to={'/'}><div className="header__logo">
                       <img width="38" src={logo} alt="Pizza logo" />
-                      <div>
+                      <div className={'max-sm:hidden'}>
                          <h1>React Pizza</h1>
                          <p>самая вкусная пицца во вселенной</p>
                       </div>
-                   </div>
+                   </div></NavLink>
                    <CartButton>
                       <div className="header__cart">
                          <NavLink to={'/cart'}>

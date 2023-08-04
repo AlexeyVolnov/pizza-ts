@@ -26,6 +26,12 @@ body {
   }
 
   &__top {
+    @media (max-width: 1031px){
+      display: flex;
+      flex-direction: column;
+      row-gap: 25px;
+    }
+
     display: flex;
     align-items: center;
     justify-content: space-between;

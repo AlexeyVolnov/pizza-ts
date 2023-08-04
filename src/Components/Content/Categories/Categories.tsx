@@ -15,16 +15,14 @@ const Categories: FC<ICategoriesProps> = ({categories,activeCategories,setActive
   }
 
   return (
-     <div>
        <div className="categories">
-         <ul>
+         <ul className={'justify-center'}>
            {categories?.map((category) =>
               <div key={'1'+category} onClick={() => selectCategoriesHandler(category)}>
                 <li className={category === activeCategories ? 'active' : ''}> {category} </li>
               </div>)}
          </ul>
        </div>
-     </div>
   )
 }
 
