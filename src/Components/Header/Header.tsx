@@ -26,6 +26,7 @@ const Header: FC<IHeaderProps> = ({}) => {
                          <p>самая вкусная пицца во вселенной</p>
                       </div>
                    </div></NavLink>
+
                    <CartButton>
                       <div className="header__cart">
                          <NavLink to={'/cart'}>

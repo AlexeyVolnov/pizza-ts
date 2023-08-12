@@ -5,15 +5,18 @@ import {FC, useEffect} from "react";
 import {Route, Routes} from "react-router-dom";
 import Cart from "./pages/Cart.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import {useAppDispatch} from "./hooks.tsx";
+import {fetchPizzas} from "./store/pizzaSlice.tsx";
 
 
 interface IAppProps {
 }
 
 const App: FC<IAppProps> = ({}) => {
-  useEffect(() => {
-    fetch('https://64c9f1e7b2980cec85c297c6.mockapi.io/pizzas')
-  }, [])
+const dispatch = useAppDispatch()
+  useEffect(()=>{
+    dispatch(fetchPizzas)
+  },[])
   return (
      <>
        <div className="wrapper">

@@ -1,28 +1,31 @@
-import {Dispatch, FC, SetStateAction} from 'react';
+import {FC} from 'react';
+import {useAppDispatch, useAppSelector} from "../../../hooks.tsx";
+import {setCategories} from "../../../store/pizzaSlice.tsx";
 
 
 
 interface ICategoriesProps {
-  categories: String[],
-  activeCategories:string,
-  setActiveCategories:Dispatch<SetStateAction<string>>
 }
 
-const Categories: FC<ICategoriesProps> = ({categories,activeCategories,setActiveCategories}) => {
-
-  const selectCategoriesHandler = (category:any) => {
-    setActiveCategories(category)
+const Categories: FC<ICategoriesProps> = ({}) => {
+  const selectCategories = useAppSelector(state=>state.pizza.selectCategories)
+  const dispatch = useAppDispatch()
+  const categories = useAppSelector(state => state.pizza.pizzaCategories)
+  const selectCategoriesHandler = (category: string) => {
+    dispatch(setCategories(category))
   }
 
   return (
-       <div className="categories">
-         <ul className={'justify-center'}>
-           {categories?.map((category) =>
-              <div key={'1'+category} onClick={() => selectCategoriesHandler(category)}>
-                <li className={category === activeCategories ? 'active' : ''}> {category} </li>
-              </div>)}
-         </ul>
-       </div>
+     <div className="categories">
+
+       <ul className={'justify-center'}>
+         {categories?.map((category) =>
+            <div key={'1' + category} onClick={() => selectCategoriesHandler(category)}>
+              <li className={category === selectCategories ? 'active' : ''}> {category} </li>
+            </div>)}
+       </ul>
+
+     </div>
   )
 }
 

@@ -1,8 +1,10 @@
 import Categories from "../Components/Content/Categories/Categories.tsx";
 import SortPopup from "../Components/Content/Sort/SortPopup.tsx";
-import {FC, useEffect, useState} from "react";
+import {FC} from "react";
 import PizzaList from "../Components/Content/PizzaBlock/PizzaList.tsx";
 import {useAppSelector} from "../hooks.tsx";
+import Paginate from "../Components/Pagination/Paginate.tsx";
+import Search from "../Components/Content/Search/Search.tsx";
 
 
 interface IContentProps {
@@ -11,33 +13,21 @@ interface IContentProps {
 
 const Content: FC<IContentProps> = ({}) => {
 
-  const categories = useAppSelector(state => state.pizza.pizzaCategories)
-  const sortedOptions = useAppSelector(state => state.pizza.sortedOptions);
-  const pizzas = useAppSelector(state => state.pizza.pizzaList)
-  const [activeCategories, setActiveCategories] = useState('Все');
-  const [sortBy, setSortBy] = useState(sortedOptions[0]);
-  const filterCategories = pizzas.filter(pizza => pizza.category.includes(activeCategories))
+  const pizzas = useAppSelector(state => state.pizza.filteredPizzes)
 
+const setCounterPagination = ()=>{}
   return (
      <>
 
        <div className="container">
          <div className="content__top">
-           <Categories
-              categories={categories}
-              activeCategories={activeCategories}
-              setActiveCategories={setActiveCategories}
-           />
-           <SortPopup
-              sortedOptions={sortedOptions}
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-           />
+           <Categories/>
+           <SortPopup/>
          </div>
+         <Search/>
          <h2 className="content__title">Все пиццы</h2>
-
-           <PizzaList pizzaList={filterCategories}/>
-
+           <PizzaList pizzaList={pizzas}/>
+         <Paginate setCounterPagination={setCounterPagination} pageCount={10}/>
        </div>
 
      </>
